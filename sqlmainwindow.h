@@ -1,8 +1,6 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
-#include <QDebug>
-#include <QtSql>
-#include <QFileInfo>
+#ifndef SQLMAINWINDOW_H
+#define SQLMAINWINDOW_H
+
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -20,4 +18,4 @@ public:
 private:
     Ui::MainWindow *ui;
 };
-#endif // MAINWINDOW_H
+#endif // SQLMAINWINDOW_H

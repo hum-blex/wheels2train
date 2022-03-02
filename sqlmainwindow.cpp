@@ -1,5 +1,7 @@
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
+#include "sqlmainwindow.h"
+#include "ui_sqlmainwindow.h"
+#include <QtDebug>
+#include <QtSql>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -7,14 +9,23 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    QSqlDatabase mydb = QSqlDatabase :: addDatabase("QSQLITE");
-    mydb.setDatabaseName("C:/Users/whyar/Desktop/SQLite3DBs/newdb.db");
+    QString servername = "GTH\\SQLEXPRESS";
+    QString dbname = "wheels2train";
 
-    if(mydb.open()){
-        ui->label->setText("Conection Established");
+    QSqlDatabase db = QSqlDatabase :: addDatabase("QSQLITE");
+
+    db.setConnectOptions();
+
+    QString dsn = QString("DRIVER = (SQL Native Client); SERVER = %1; DATABASE = %2; UID = admin; PWD = admin;");
+
+    db.setDatabaseName(dsn);
+
+    if(db.open()){
+
+        ui->LabelForConnection->setText("Connection Established");
     }
     else{
-        ui->label->setText("Error connecting...");
+        ui->LabelForConnection->setText(db.lastError().text());
     }
 
 }
