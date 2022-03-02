@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>audio.png</file>
+        <file>no-audio.png</file>
+    </qresource>
+</RCC>
