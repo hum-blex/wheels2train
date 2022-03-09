@@ -10,16 +10,21 @@ CONFIG += c++11
 
 SOURCES += \
     car.cpp \
+    circle.cpp \
     game.cpp \
     gamepage.cpp \
     main.cpp \
-    scene.cpp
+    scene.cpp \
+    square.cpp
 
 HEADERS += \
+    Singleton.h \
     car.h \
+    circle.h \
     game.h \
     gamepage.h \
-    scene.h
+    scene.h \
+    square.h
 
 FORMS += \
     game.ui \
