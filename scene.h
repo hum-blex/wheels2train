@@ -14,8 +14,8 @@ public:
 protected:
     void keyPressEvent(QKeyEvent * event) override;
 private:
-    car *lcar =new car(50,700,":/images/audio.png");
-    car *rcar =new car(350,700,":/images/no-audio.png");
+    car *lcar =new car(50,690,":/images/redcar.png");
+    car *rcar =new car(350,690,":/images/bluecar.png");
     QPixmap * picture =nullptr;
     QPainter * painter = nullptr;
 };

@@ -7,7 +7,7 @@
 #include <QGraphicsEllipseItem>
 
 #include "car.h"
-//#include "Singleton.h"
+#include "Singleton.h"
 class Circle: public QObject, public QGraphicsEllipseItem
 {
     Q_OBJECT
@@ -15,14 +15,14 @@ public:
     Circle();
     Circle(int);
     ~Circle();
-
-
-
+signals:
+    void CollidedWithCircle();
+    void ReachedTheEnd(int);
 private:
     QTimer * timer;
 private slots:
     void move();
 };
-//typedef Singleton<Circle> EmmitterC;
+typedef Singleton<Circle> EmmitterC;
 
 #endif // CIRCLE_H

@@ -6,6 +6,7 @@
 #include <QBrush>
 #include <QFile>
 #include "game.h"
+#include "highscore.h"
 
 namespace Ui {//default
 class gamepage;//default
@@ -26,14 +27,21 @@ private slots:
 
     void on_play_clicked();
 
+    void return_to_main_page();
+
+    void on_profile_clicked();
+
 private:
     Ui::gamepage *ui;//default
     QPixmap * picture = nullptr;
     QPainter *painter = nullptr;
 
     game gg;// defining game
+    highscore hh;
 
     QString message;
+
+    int highscore;
 };
 
 #endif // GAMEPAGE_H

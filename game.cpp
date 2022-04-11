@@ -1,5 +1,6 @@
 #include "game.h"
 #include "ui_game.h"
+#include <QMessageBox>
 
 #include <QDebug>
 
@@ -12,22 +13,31 @@ game::game(QWidget *parent) ://default
     ui->graphicsView->setScene(sc);
     ui->graphicsView->setFixedSize(600,800);
     sc->setSceneRect(0,0,600,800);
+    sc->addItem(sb);
 
- connect(timer , SIGNAL(timeout()),this,SLOT(spawnCirclesandSquares()));
-timer->start(5000);
+    connect(EmmitterC::Instance(),SIGNAL(CollidedWithCircle()),this,SLOT(IncreaseScore()));
+    connect(EmmitterC::Instance(),SIGNAL(ReachedTheEnd(int)),this,SLOT(EndGame(int)));
+    connect(EmmitterS::Instance(),SIGNAL(CollidedWithSquare(int)),this,SLOT(EndGame(int)));
+
+    connect(timer , SIGNAL(timeout()),this,SLOT(spawnCirclesandSquares()));
+
+
 }
 
 
 game::~game()//default
 {
     delete sc;
+     delete sb;
     delete timer;
     delete ui;//default
 }
 
 void game::start()
 {
-//    timer->start(5000);
+    timer->start(3000);
+    sb->resetScore();
+    GameEnded= false;
 }
 
 void game::spawnCirclesandSquares()
@@ -66,4 +76,31 @@ void game::spawnCirclesandSquares()
             sc->addItem(dd);
         }
     }
+}
+
+void game::EndGame(int a){
+    if(GameEnded)//this is incase the car still collides or circle reaches the end afeter the game has ended;
+        return;
+    current_score = sb->getScore();
+    GameEnded = true;
+    timer->stop();
+    QString message{};
+
+    if(a == 1){
+        message = "You hit a Square";
+    }else{
+        message = "You missed a Circle";
+    }
+
+    QMessageBox box(QMessageBox::Critical,"GAME OVER!",message,QMessageBox::Ok);
+            if(box.exec() == QMessageBox::Ok){
+                gameEnded();
+                close();
+            }
+}
+
+void game::IncreaseScore()
+{
+    if(!GameEnded)
+        sb->increaseScore();
 }

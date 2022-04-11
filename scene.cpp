@@ -7,7 +7,7 @@ scene::scene()
     painter = new QPainter(picture);
 
 
-    painter->fillRect(0,0,600,800,QColor(32,210,250));//color in rgb
+    painter->fillRect(0,0,600,800,Qt::black);//color in rgb
     painter->fillRect(295,0,10,800,Qt::white);
     int interval=0;
     for(int i=0 ;i<14;i++){

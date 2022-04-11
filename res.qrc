@@ -2,5 +2,13 @@
     <qresource prefix="/images">
         <file>audio.png</file>
         <file>no-audio.png</file>
+        <file>bluecar.png</file>
+        <file>redcar.png</file>
+        <file>help.jpeg</file>
+        <file>playbutton.jpeg</file>
+        <file>wheels2train.jpeg</file>
+        <file>about.png</file>
+        <file>high.png</file>
+        <file>howto.png</file>
     </qresource>
 </RCC>

@@ -6,7 +6,7 @@
 #include <QGraphicsRectItem>
 
 #include "car.h"
-//#include "Singleton.h"
+#include "Singleton.h"
 
 class Square: public QObject, public QGraphicsRectItem
 {
@@ -15,11 +15,13 @@ public:
     Square();
     Square(int);
     ~Square();
+signals:
+    void CollidedWithSquare(int);
 private:
     QTimer * timer;
 private slots:
     void move();
 };
-//typedef Singleton<Square> EmmitterS;
+typedef Singleton<Square> EmmitterS;
 
 #endif // CIRCLE_H
