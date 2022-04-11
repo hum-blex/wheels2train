@@ -2,10 +2,11 @@
 #define CAR_H
 
 #include <QGraphicsPixmapItem>
+#include <QBrush>
 
 #include <QGraphicsScene>
 
-class car:public QGraphicsPixmapItem
+class car:public QObject, public QGraphicsPixmapItem
 {
 public:
     car(int, int,QString);

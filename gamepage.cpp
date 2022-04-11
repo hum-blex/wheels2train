@@ -3,22 +3,28 @@
 #include <QMessageBox>
 #include <QPalette>
 
-
 gamepage::gamepage(QWidget *parent) ://default
     QMainWindow(parent),//default
     ui(new Ui::gamepage)//default
 {
     ui->setupUi(this);//default
 
-    picture = new QPixmap(600,800);//declaring a new Pixmap
-    painter =new QPainter(picture);//Painter helps us to paint sth/ perform drawing operations
-
-    painter->fillRect(0,0,600,800,QColor(32,210,250));//color in rgb
 
 
-    QPalette palette;
-    palette.setBrush((this)->backgroundRole(),QBrush(*picture));
-    (this)->setPalette(palette);
+
+//    picture = new QPixmap(600,800);//declaring a new Pixmap
+//    painter =new QPainter(picture);//Painter helps us to paint sth/ perform drawing operations
+
+//    painter->fillRect(0,0,600,800,QColor(32,210,250));//color in rgb
+
+
+//    QPalette palette;
+//    palette.setBrush((this)->backgroundRole(),QBrush(*picture));
+//    (this)->setPalette(palette);
+//    ui->about->setStyleSheet("color: #FF0000");
+      ui->centralwidget->setStyleSheet("background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(2, 0, 36, 255), stop:0.367925 rgba(16, 5, 52, 255), stop:1 rgba(0, 164, 255, 255));");
+
+    connect(&gg,SIGNAL(gameEnded()),this,SLOT(return_to_main_page()));
 
 }
 
@@ -31,30 +37,54 @@ gamepage::~gamepage()//default
 
 void gamepage::on_about_clicked()
 {
-    message= QString("Its a fucking game.Go get a life.");
+
+
+    message= QString("It is a game developed by :\n"
+                     "-Pranay Kauri\n"
+                     "-Gunjan Thapa\n"
+                     "-Drishya Raj Sharma\n"
+                     "-Salon Gautam");
     QMessageBox::information(this,"ABOUT THIS GAME!",message);
+
 }
 
 
 void gamepage::on_howtoplay_clicked()
 {
-    message=QString("This game has two cars that move between two lanes\n"
+    message=QString("<span style='color:#000;'>This game has two cars that move between two lanes\n"
                     "You would use the left and the right arrow keys to control the cars\n"
                     "The left arrow key controls the left while the right arrow key controls the right car,\n"
                     "If you miss a single circle of if any car collides with a square, that's game over\n"
-                    "Survive for as long as you can!");
+                    "Survive for as long as you can!</span>").arg(">>>");
     QMessageBox::information(this,"HOW TO PLAY", message);
+
 }
 
 
 void gamepage::on_play_clicked()
 {
     gg.show();
+    gg.start();
     hide();
+    return;
 }
+
+void gamepage::return_to_main_page()
+{
+    show();
+}
+
 
 /*
 -QPixmap is one of the four classes for handling image data including QImage, QBitmap,QPicture.
 -QPixmap is an off-screen image representation that can be used as a paint device.
 -QMessageBox provides a modal dialog for informing the user or for asking the user a question and receivine an answer.
 */
+
+void gamepage::on_profile_clicked()
+{
+    hh.show();
+    hide();
+    return;
+}
+

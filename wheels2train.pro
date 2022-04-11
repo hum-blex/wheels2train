@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -10,20 +10,34 @@ CONFIG += c++11
 
 SOURCES += \
     car.cpp \
+    circle.cpp \
+    entername.cpp \
     game.cpp \
     gamepage.cpp \
+    highscore.cpp \
     main.cpp \
-    scene.cpp
+    scene.cpp \
+    score.cpp \
+    square.cpp
 
 HEADERS += \
+    Singleton.h \
+    Singleton.h \
     car.h \
+    circle.h \
+    entername.h \
     game.h \
     gamepage.h \
-    scene.h
+    highscore.h \
+    scene.h \
+    score.h \
+    square.h
 
 FORMS += \
+    entername.ui \
     game.ui \
-    gamepage.ui
+    gamepage.ui \
+    highscore.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
