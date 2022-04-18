@@ -45,6 +45,5 @@ void Square::move(){
          delete this;
 
      }
-
 }
 

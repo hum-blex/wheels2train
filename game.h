@@ -48,6 +48,7 @@ private slots:
     void spawnCirclesandSquares();
     void EndGame(int);
     void IncreaseScore();
+//    void IncreaseSpeed();
 };
 
 #endif // GAME_H

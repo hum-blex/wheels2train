@@ -7,6 +7,7 @@
 #include <QFile>
 #include "game.h"
 #include "highscore.h"
+#include "entername.h"
 
 namespace Ui {//default
 class gamepage;//default
@@ -27,6 +28,8 @@ private slots:
 
     void on_play_clicked();
 
+    void enter_name();
+
     void return_to_main_page();
 
     void on_profile_clicked();
@@ -38,6 +41,7 @@ private:
 
     game gg;// defining game
     highscore hh;
+    entername ee;
 
     QString message;
 

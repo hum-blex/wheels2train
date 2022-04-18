@@ -10,6 +10,7 @@ Circle::Circle()
 
 Circle::Circle(int x)
 {
+    int y =50;
     setRect(x,0,50,50);
     if(x<300){
     setBrush(QBrush(QColor(230, 14, 35),Qt::SolidPattern));
@@ -21,9 +22,8 @@ Circle::Circle(int x)
     }
 
     //connect
-    timer = new QTimer;
     connect(timer,SIGNAL(timeout()),this,SLOT(move())) ;
-    timer->start(50);
+    timer->start(y);
 }
 Circle::~Circle(){
     delete timer;
@@ -52,4 +52,6 @@ void Circle::move(){
      }
 
 }
+
+
 

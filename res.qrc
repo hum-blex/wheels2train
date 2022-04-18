@@ -10,5 +10,9 @@
         <file>about.png</file>
         <file>high.png</file>
         <file>howto.png</file>
+        <file>wheels2train.png</file>
+        <file>bulb.png</file>
+        <file>question-mark.png</file>
+        <file>weirdstuff.png</file>
     </qresource>
 </RCC>

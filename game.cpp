@@ -19,6 +19,7 @@ game::game(QWidget *parent) ://default
     connect(EmmitterC::Instance(),SIGNAL(ReachedTheEnd(int)),this,SLOT(EndGame(int)));
     connect(EmmitterS::Instance(),SIGNAL(CollidedWithSquare(int)),this,SLOT(EndGame(int)));
 
+//    connect(EmmitterO::Instance(),SIGNAL(scoreten()),this,SLOT(IncreaseSpeed()));
     connect(timer , SIGNAL(timeout()),this,SLOT(spawnCirclesandSquares()));
 
 
@@ -79,8 +80,9 @@ void game::spawnCirclesandSquares()
 }
 
 void game::EndGame(int a){
-    if(GameEnded)//this is incase the car still collides or circle reaches the end afeter the game has ended;
+    if(GameEnded){//this is incase the car still collides or circle reaches the end afeter the game has ended;
         return;
+    }
     current_score = sb->getScore();
     GameEnded = true;
     timer->stop();
@@ -104,3 +106,8 @@ void game::IncreaseScore()
     if(!GameEnded)
         sb->increaseScore();
 }
+
+//void game::IncreaseSpeed()
+//{
+
+//}
