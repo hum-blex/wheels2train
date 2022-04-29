@@ -14,8 +14,7 @@ void Score::increaseScore()
 {
     score++;
     setPlainText(QString("Score: ")+ QString:: number(score));
-    if(score%10 ==0 && score <150)
-        EmmitterO::Instance()->scoreten();
+
 }
 
 int Score::getScore(){

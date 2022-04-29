@@ -12,23 +12,11 @@ entername::entername(QWidget *parent) :
   connOpen();
         if(mydb.open()){
             ui->label->setText("Enter Your Name");
-            /*QSqlQuery qry;
-
-            if(qry.exec("SELECT * FROM highscore")){
-                while(qry.next()){
-                    QString a = qry.value(1).toString();
-                    ui->LabelForConnection->setText(a);
-                }
-            }
-            else{
-
-            }
-    */
-           // ui->LabelForConnection->setText("Conection Closed");
         }
         else{
             ui->label->setText(mydb.lastError().text());
         }
+        connClose();
 
 }
 
@@ -39,25 +27,19 @@ entername::~entername()
 
 void entername::on_pushButton_clicked()
 {
-    QString name = ui -> lineEdit -> text();
+    connOpen();
+    QString name = ui -> lineEdit -> text();//taking name as input
         qDebug() << name ;
-        int highscore = gg.getCurrentScore();
-//        qDebug()<<highscore;
-//        if(!mydb.isOpen()){
-//            qDebug()<<"Fail";
-//            return;
-//        }
-
+        int highscore = g.getCurrentScore();//passing the score from game class after the game ended to a variable highscore
+        qDebug()<<highscore;
+        // query update after name and highscore is obtained
         QSqlQuery update;
         update.prepare("insert into tbl_userinfo ( name, score) values ( :uname, :uscore) ");
         update.bindValue(":uname", name);
         update.bindValue(":uscore", highscore);
-        update.exec();
-//        if(update.exec()){
-//            qDebug()<<"hey";
-//        }
+        if(update.exec()) qDebug() << "Written to database";
         this->close();
-        name_entered();
+        name_entered();//signal connect to return to homepage
         connClose();
 }
 

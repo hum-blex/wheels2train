@@ -18,13 +18,16 @@ class entername : public QMainWindow
 public:
     explicit entername(QWidget *parent = nullptr);
     ~entername();
-    QSqlDatabase mydb;
 
+    QSqlDatabase mydb;//defining database object mydb
+
+    //functiont to close data base
     void connClose(){
         mydb.close();
         mydb.removeDatabase(QSqlDatabase::defaultConnection);
     }
 
+   //checking if the data base is open or not
     bool connOpen(){
         mydb = QSqlDatabase :: addDatabase("QSQLITE");
            mydb.setDatabaseName("D:/QT/wheels2train/db/mydb.db");
@@ -46,7 +49,8 @@ private slots:
     void on_pushButton_clicked();
 
 private:
-    game gg;
+    game g;
+
     Ui::entername *ui;
 
 };

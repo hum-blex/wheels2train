@@ -17,7 +17,7 @@ highscore::highscore(QWidget *parent) :
         ui -> tableView -> setModel(modal);
 //        ui -> tableView -> resizeColumnsToContents();
 //        ui -> tableView -> resizeRowsToContents();
-//        connClose();
+        conn.connClose();
 
 }
 

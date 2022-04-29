@@ -14,8 +14,9 @@ class Circle: public QObject, public QGraphicsEllipseItem
     Q_OBJECT
 public:
     Circle();
-    Circle(int);
+    Circle(int,int);
     ~Circle();
+//    void time();
 signals:
     void CollidedWithCircle();
     void ReachedTheEnd(int);
