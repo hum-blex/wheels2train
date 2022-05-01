@@ -4,6 +4,8 @@
 
 #include <QDebug>
 
+static int endg ;
+int speed ;
 game::game(QWidget *parent) ://default
     QWidget(parent),//default
     ui(new Ui::game)//default
@@ -15,12 +17,13 @@ game::game(QWidget *parent) ://default
     sc->setSceneRect(0,0,600,800);
     sc->addItem(sb);
 
+    //connections..
+
     connect(EmmitterC::Instance(),SIGNAL(CollidedWithCircle()),this,SLOT(IncreaseScore()));
     connect(EmmitterC::Instance(),SIGNAL(ReachedTheEnd(int)),this,SLOT(EndGame(int)));
     connect(EmmitterS::Instance(),SIGNAL(CollidedWithSquare(int)),this,SLOT(EndGame(int)));
 
     connect(timer , SIGNAL(timeout()),this,SLOT(spawnCirclesandSquares()));
-
 
 }
 
@@ -35,53 +38,100 @@ game::~game()//default
 
 void game::start()
 {
+    endg =0;
     timer->start(3000);
-    sb->resetScore();
+    sb->resetScore();//resets score to zero
     GameEnded= false;
 }
 
 void game::spawnCirclesandSquares()
 {
+
     circleOrSquare = rand()%4;
     whichPosition = rand()%4;
-//    qDebug()<<circleOrSquare;
-//    qDebug()<<whichPosition;
 
-    ///addd a case ehere the both sides get n ietm at the sam time lool
-;
+    int z=sb->getScore();//gets score from score class
+
+    //defining different speed for different scores
+    if(z<10)
+        speed= 50;
+    else if(z<20)
+        speed =47;
+    else if(z<30)
+        speed= 45;
+    else if(z<40)
+        speed =42;
+    else if(z<50)
+        speed =39;
+    else if(z<60)
+        speed= 36;
+    else if(z<70)
+        speed =33;
+    else if(z<80)
+        speed =30;
+    else if(z<90)
+        speed= 27;
+    else if(z<100)
+        speed =24;
+    else if(z<110)
+        speed =21;
+    else if(z<120)
+        speed= 18;
+    else
+        speed =15;
+
+    qDebug()<<z;
+  qDebug()<<speed;
+
+    //add a case where the both sides get n item at the same time
+
     if(circleOrSquare == 1){
-        Circle *cc = new Circle(topPositions[whichPosition]);
+        Circle *cc = new Circle(topPositions[whichPosition],speed);
         sc->addItem(cc);
-
-    }else if(circleOrSquare == 2){
-        Square *dd = new Square(topPositions[whichPosition]);
+    }
+    else if(circleOrSquare == 2){
+        Square *dd = new Square(topPositions[whichPosition],speed);
         sc->addItem(dd);
-    }else{
+    }
+    else{
         int inside = rand()%2;
         int side = rand()%2;
         if(inside ==0){
-            Circle *cc = new Circle(topPositions[side]);
+            Circle *cc = new Circle(topPositions[side],speed);
             sc->addItem(cc);
-        }else{
-            Square *dd = new Square(topPositions[side]);
+        }
+        else{
+            Square *dd = new Square(topPositions[side],speed);
             sc->addItem(dd);
         }
         inside = rand()%2;
         side = rand()%2;
         if(inside ==0){
-            Circle *cc = new Circle(topPositions[side +2]);
+            Circle *cc = new Circle(topPositions[side +2],speed);
             sc->addItem(cc);
         }else{
-            Square *dd = new Square(topPositions[side +2]);
+            Square *dd = new Square(topPositions[side +2],speed);
             sc->addItem(dd);
         }
     }
+
 }
 
 void game::EndGame(int a){
-    if(GameEnded)//this is incase the car still collides or circle reaches the end afeter the game has ended;
+
+    if(endg == 0) {
+
+        endg = 1;
+    } else {
+
+        current_score = sb->getScore();
         return;
-    current_score = sb->getScore();
+    }
+//    if(GameEnded){//this is incase the car still collides or circle reaches the end afeter the game has ended;
+//        return;
+//    }
+//    current_score = sb->getScore();
+    qDebug() << current_score;
     GameEnded = true;
     timer->stop();
     QString message{};
@@ -104,3 +154,4 @@ void game::IncreaseScore()
     if(!GameEnded)
         sb->increaseScore();
 }
+

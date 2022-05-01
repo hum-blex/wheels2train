@@ -29,9 +29,10 @@ public://default
 signals:
     void gameEnded();
 
+
+
 private://default
     Ui::game *ui;//default
-
     scene * sc = new scene();
     Score * sb  = new Score();
     QTimer * timer = new QTimer();
@@ -39,8 +40,10 @@ private://default
     int topPositions[4]={50,200,350,500};
     int circleOrSquare;
     int whichPosition;
+    Square sq;
+    Circle *ci;
 
-    bool GameEnded{false};
+    bool GameEnded = false;
     int current_score{0};
 
 
@@ -48,6 +51,7 @@ private slots:
     void spawnCirclesandSquares();
     void EndGame(int);
     void IncreaseScore();
+//    void setSpeed();
 };
 
 #endif // GAME_H

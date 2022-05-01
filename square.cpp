@@ -6,7 +6,7 @@ Square::Square(){
 
 }
 
-Square::Square(int x)
+Square::Square(int x,int y)
 {
     setRect(x,0,50,50);
     if(x<300){
@@ -21,7 +21,7 @@ Square::Square(int x)
     //connect
     timer = new QTimer;
     connect(timer,SIGNAL(timeout()),this,SLOT(move())) ;
-    timer->start(50);
+    timer->start(y);
 }
 Square::~Square(){
     delete timer;
@@ -45,6 +45,5 @@ void Square::move(){
          delete this;
 
      }
-
 }
 

@@ -3,6 +3,8 @@
 
 #include <QGraphicsPixmapItem>
 #include <QBrush>
+#include <QPropertyAnimation>
+
 
 #include <QGraphicsScene>
 
@@ -13,6 +15,7 @@ public:
     void move();
 private:
     bool position;
+//    QPropertyAnimation *animation = new QPropertyAnimation();
 };
 
 #endif // CAR_H

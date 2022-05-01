@@ -6,7 +6,9 @@
 #include <QBrush>
 #include <QFile>
 #include "game.h"
-#include "highscore.h"
+
+#include "entername.h"
+//#include "hs.h"
 
 namespace Ui {//default
 class gamepage;//default
@@ -27,6 +29,8 @@ private slots:
 
     void on_play_clicked();
 
+    void enter_name();
+
     void return_to_main_page();
 
     void on_profile_clicked();
@@ -37,7 +41,26 @@ private:
     QPainter *painter = nullptr;
 
     game gg;// defining game
-    highscore hh;
+    entername ee;
+    QSqlDatabase mydb;
+    void connClose(){
+        mydb.close();
+        mydb.removeDatabase(QSqlDatabase::defaultConnection);
+    }
+
+    bool connOpen(){
+        mydb = QSqlDatabase :: addDatabase("QSQLITE");
+           mydb.setDatabaseName("D:/QT/wheels2train/db/mydb.db");
+
+           if(mydb.open()){
+               qDebug()<<("Connecteddd...");
+               return true;
+           }
+           else{
+               qDebug()<<("Fail to open the database");
+               return false;
+           }
+    }
 
     QString message;
 

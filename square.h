@@ -13,7 +13,7 @@ class Square: public QObject, public QGraphicsRectItem
     Q_OBJECT
 public:
     Square();
-    Square(int);
+    Square(int,int);
     ~Square();
 signals:
     void CollidedWithSquare(int);

@@ -1,22 +1,24 @@
 #include "highscore.h"
 #include "ui_highscore.h"
-#include <QtSql>
-#include "stdio.h"
-#include <QFileInfo>
+
 
 highscore::highscore(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::highscore)
 {
     ui->setupUi(this);
+    conn.connOpen();
+
     QSqlQueryModel *modal = new QSqlQueryModel();
         QSqlQuery *qry = new QSqlQuery();
-        qry -> prepare("SELECT Name, Score FROM highscore ORDER BY Score DESC LIMIT 10");
+        qry -> prepare("SELECT name, score FROM tbl_userinfo ORDER BY score DESC LIMIT 10");
         qry->exec();
         modal->setQuery(*qry);
         ui -> tableView -> setModel(modal);
-        ui -> tableView -> resizeColumnsToContents();
-        ui -> tableView -> resizeRowsToContents();
+//        ui -> tableView -> resizeColumnsToContents();
+//        ui -> tableView -> resizeRowsToContents();
+        conn.connClose();
+
 }
 
 highscore::~highscore()
@@ -27,6 +29,7 @@ highscore::~highscore()
 void highscore::on_pushButton_clicked()
 {
     this->close();
+    profile_seen();
 
 }
 

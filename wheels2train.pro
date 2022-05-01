@@ -14,7 +14,7 @@ SOURCES += \
     entername.cpp \
     game.cpp \
     gamepage.cpp \
-    highscore.cpp \
+    hs.cpp \
     main.cpp \
     scene.cpp \
     score.cpp \
@@ -28,7 +28,7 @@ HEADERS += \
     entername.h \
     game.h \
     gamepage.h \
-    highscore.h \
+    hs.h \
     scene.h \
     score.h \
     square.h
@@ -37,7 +37,7 @@ FORMS += \
     entername.ui \
     game.ui \
     gamepage.ui \
-    highscore.ui
+    hs.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
