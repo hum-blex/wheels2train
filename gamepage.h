@@ -51,10 +51,10 @@ private:
 
     bool connOpen(){
         mydb = QSqlDatabase :: addDatabase("QSQLITE");
-           mydb.setDatabaseName("D:/ProjectFinal/wheels2train/db/mydb.db");
+           mydb.setDatabaseName(QDir::currentPath() + "/../wheels2train/db/mydb.db");
 
            if(mydb.open()){
-               qDebug()<<("Connecteddd...");
+               qDebug()<<("Connected...");
                return true;
            }
            else{

@@ -31,7 +31,7 @@ game::game(QWidget *parent) ://default
 game::~game()//default
 {
     delete sc;
-     delete sb;
+    delete sb;
     delete timer;
     delete ui;//default
 }
@@ -39,7 +39,7 @@ game::~game()//default
 void game::start()
 {
     endg =0;
-    int gameTimer = 2500;
+    int gameTimer = 2400;
 
     timer->start(gameTimer);
     sb->resetScore();   //resets score to zero
@@ -55,51 +55,23 @@ void game::spawnCirclesandSquares()
     int z=sb->getScore();//gets score from score class
 
     int gameTimer;
-    if(z<5)
-        gameTimer = 2500;
-    else if(z<10)
-        gameTimer = 2200;
-    else if(z<20)
-        gameTimer = 1900;
-    else if(z<30)
-        gameTimer = 1600;
-    else if(z<40)
-        gameTimer = 1300;
-    else if(z<50)
-        gameTimer = 1000;
-    else if(z<60)
-        gameTimer = 800;
-    else if(z<70)
-        gameTimer = 700;
-    else
-        gameTimer = 600;
-
+    gameTimer = 2400;
+    if(z <= 60)
+        gameTimer -= (z/3) * 100;
+    else if(z > 60)
+        gameTimer = 300;
     timer->start(gameTimer);
 
     qDebug()<< gameTimer;
 
     //defining different speed for different scores
-    if(z<5)
-        speed = 25;
-    else if(z<10)
-        speed = 22;
-    else if(z<20)
-        speed = 19;
-    else if(z<30)
-        speed = 16;
-    else if(z<40)
-        speed = 13;
-    else if(z<50)
-        speed = 10;
-    else if(z<60)
-        speed = 8;
-    else if(z<70)
-        speed = 7;
-    else
-        speed = 6;
-
+    speed = 25;
+    if(z <= 50)
+        speed -= (z/5) * 2;
+    else if(z > 50)
+        speed = 4;
     qDebug()<<z;
-  qDebug()<<speed;
+    qDebug()<<speed;
 
     //add a case where the both sides get n item at the same time
 
