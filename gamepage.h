@@ -6,6 +6,7 @@
 #include <QBrush>
 #include <QFile>
 #include "game.h"
+#include "score.h"
 
 #include "entername.h"
 //#include "hs.h"
@@ -39,7 +40,7 @@ private:
     Ui::gamepage *ui;//default
     QPixmap * picture = nullptr;
     QPainter *painter = nullptr;
-
+    Score * sb  = new Score();
     game gg;// defining game
     entername ee;
     QSqlDatabase mydb;
@@ -50,7 +51,7 @@ private:
 
     bool connOpen(){
         mydb = QSqlDatabase :: addDatabase("QSQLITE");
-           mydb.setDatabaseName("D:/QT/wheels2train/db/mydb.db");
+           mydb.setDatabaseName("D:/ProjectFinal/wheels2train/db/mydb.db");
 
            if(mydb.open()){
                qDebug()<<("Connecteddd...");

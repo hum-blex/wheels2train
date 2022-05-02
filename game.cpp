@@ -39,8 +39,10 @@ game::~game()//default
 void game::start()
 {
     endg =0;
-    timer->start(3000);
-    sb->resetScore();//resets score to zero
+    int gameTimer = 2500;
+
+    timer->start(gameTimer);
+    sb->resetScore();   //resets score to zero
     GameEnded= false;
 }
 
@@ -52,33 +54,49 @@ void game::spawnCirclesandSquares()
 
     int z=sb->getScore();//gets score from score class
 
-    //defining different speed for different scores
-    if(z<10)
-        speed= 50;
+    int gameTimer;
+    if(z<5)
+        gameTimer = 2500;
+    else if(z<10)
+        gameTimer = 2200;
     else if(z<20)
-        speed =47;
+        gameTimer = 1900;
     else if(z<30)
-        speed= 45;
+        gameTimer = 1600;
     else if(z<40)
-        speed =42;
+        gameTimer = 1300;
     else if(z<50)
-        speed =39;
+        gameTimer = 1000;
     else if(z<60)
-        speed= 36;
+        gameTimer = 800;
     else if(z<70)
-        speed =33;
-    else if(z<80)
-        speed =30;
-    else if(z<90)
-        speed= 27;
-    else if(z<100)
-        speed =24;
-    else if(z<110)
-        speed =21;
-    else if(z<120)
-        speed= 18;
+        gameTimer = 700;
     else
-        speed =15;
+        gameTimer = 600;
+
+    timer->start(gameTimer);
+
+    qDebug()<< gameTimer;
+
+    //defining different speed for different scores
+    if(z<5)
+        speed = 25;
+    else if(z<10)
+        speed = 22;
+    else if(z<20)
+        speed = 19;
+    else if(z<30)
+        speed = 16;
+    else if(z<40)
+        speed = 13;
+    else if(z<50)
+        speed = 10;
+    else if(z<60)
+        speed = 8;
+    else if(z<70)
+        speed = 7;
+    else
+        speed = 6;
 
     qDebug()<<z;
   qDebug()<<speed;
@@ -123,8 +141,8 @@ void game::EndGame(int a){
 
         endg = 1;
     } else {
-
         current_score = sb->getScore();
+        qDebug() << current_score;
         return;
     }
 //    if(GameEnded){//this is incase the car still collides or circle reaches the end afeter the game has ended;
@@ -147,6 +165,7 @@ void game::EndGame(int a){
                 gameEnded();
                 close();
             }
+    sb->resetScore();
 }
 
 void game::IncreaseScore()

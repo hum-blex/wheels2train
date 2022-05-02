@@ -24,7 +24,9 @@ public://default
 
     ~game();//default
     void start();
-    int getCurrentScore(){return current_score;}
+    int getCurrentScore(){
+        return current_score;
+    }
 
 signals:
     void gameEnded();

@@ -3,6 +3,7 @@
 #include <QMessageBox>
 #include <QPalette>
 #include "hs.h"
+#include "score.h"
 
 gamepage::gamepage(QWidget *parent) ://default
     QMainWindow(parent),//default
@@ -10,20 +11,7 @@ gamepage::gamepage(QWidget *parent) ://default
 {
     ui->setupUi(this);//default
 
-
-
-
-//    picture = new QPixmap(600,800);//declaring a new Pixmap
-//    painter =new QPainter(picture);//Painter helps us to paint sth/ perform drawing operations
-
-//    painter->fillRect(0,0,600,800,QColor(32,210,250));//color in rgb
-
-
-//    QPalette palette;
-//    palette.setBrush((this)->backgroundRole(),QBrush(*picture));
-//    (this)->setPalette(palette);
-//    ui->about->setStyleSheet("color: #FF0000");
-      ui->centralwidget->setStyleSheet("background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(2, 0, 36, 255), stop:0.367925 rgba(16, 5, 52, 255), stop:1 rgba(0, 164, 255, 255));");
+    ui->centralwidget->setStyleSheet("background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(2, 0, 36, 255), stop:0.367925 rgba(16, 5, 52, 255), stop:1 rgba(0, 164, 255, 255));");
 
     connect(&gg,SIGNAL(gameEnded()),this,SLOT(enter_name()));
 //    connect(&hh,SIGNAL(profile_seen()),this,SLOT(return_to_main_page()));
@@ -66,6 +54,7 @@ void gamepage::on_howtoplay_clicked()
 
 void gamepage::on_play_clicked()
 {
+    sb->resetScore();
     gg.show();
     gg.start();
     hide();
