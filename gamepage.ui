@@ -112,7 +112,7 @@ background-repeat:none;
       <x>350</x>
       <y>580</y>
       <width>101</width>
-      <height>81</height>
+      <height>91</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -141,7 +141,7 @@ background-repeat:none;
       <x>174</x>
       <y>590</y>
       <width>61</width>
-      <height>61</height>
+      <height>71</height>
      </rect>
     </property>
     <property name="sizePolicy">

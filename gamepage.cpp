@@ -26,7 +26,6 @@ gamepage::gamepage(QWidget *parent) ://default
       ui->centralwidget->setStyleSheet("background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(2, 0, 36, 255), stop:0.367925 rgba(16, 5, 52, 255), stop:1 rgba(0, 164, 255, 255));");
 
     connect(&gg,SIGNAL(gameEnded()),this,SLOT(enter_name()));
-//    connect(&hh,SIGNAL(profile_seen()),this,SLOT(return_to_main_page()));
     connect(&ee,SIGNAL(name_entered()),this,SLOT(return_to_main_page()));
 
 }

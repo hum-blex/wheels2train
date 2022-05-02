@@ -1,5 +1,6 @@
 #include "score.h"
 #include <QFont>
+#include <QtDebug>
 
 Score::Score(QGraphicsItem * parent):QGraphicsTextItem(parent)
 {
@@ -18,6 +19,7 @@ void Score::increaseScore()
 }
 
 int Score::getScore(){
+    qDebug()<<"hey:"<<score;
     return score;
 }
 

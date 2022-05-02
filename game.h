@@ -30,7 +30,6 @@ signals:
     void gameEnded();
 
 
-
 private://default
     Ui::game *ui;//default
     scene * sc = new scene();

@@ -123,7 +123,6 @@ void game::EndGame(int a){
 
         endg = 1;
     } else {
-
         current_score = sb->getScore();
         return;
     }
@@ -145,13 +144,16 @@ void game::EndGame(int a){
     QMessageBox box(QMessageBox::Critical,"GAME OVER!",message,QMessageBox::Ok);
             if(box.exec() == QMessageBox::Ok){
                 gameEnded();
+                sb->resetScore();
                 close();
             }
+
 }
 
 void game::IncreaseScore()
 {
-    if(!GameEnded)
+//    if(!GameEnded)
+    if(endg==0)
         sb->increaseScore();
 }
 
