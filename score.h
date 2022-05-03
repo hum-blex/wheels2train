@@ -12,8 +12,6 @@ public:
     void increaseScore();
     int getScore();
     void resetScore();
-signals:
-    void scoreten();
 private:
     int score;
 };

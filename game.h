@@ -45,7 +45,8 @@ private://default
     Square sq;
     Circle *ci;
 
-    bool GameEnded = false;
+//    bool GameEnded = false;
+    bool GameRunning = true;
     int current_score{0};
 
 

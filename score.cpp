@@ -10,11 +10,10 @@ Score::Score(QGraphicsItem * parent):QGraphicsTextItem(parent)
     setFont(QFont("times",15));
 }
 
-void Score::increaseScore()
+ void Score::increaseScore()
 {
-    score++;
+    score += 1;
     setPlainText(QString("Score: ")+ QString:: number(score));
-
 }
 
 int Score::getScore(){

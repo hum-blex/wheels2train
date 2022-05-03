@@ -30,7 +30,7 @@ void entername::on_pushButton_clicked()
     connOpen();
     QString name = ui -> lineEdit -> text();//taking name as input
         qDebug() << name ;
-        int highscore = g.getCurrentScore();//passing the score from game class after the game ended to a variable highscore
+        int highscore = gg.getCurrentScore();//passing the score from game class after the game ended to a variable highscore
         qDebug()<< highscore;
         // query update after name and highscore is obtained
         QSqlQuery update;
@@ -39,6 +39,7 @@ void entername::on_pushButton_clicked()
         update.bindValue(":uscore", highscore);
         if(update.exec()) qDebug() << "Written to database";
         this->close();
+        highscore = 0;
         name_entered();//signal connect to return to homepage
         connClose();
 }

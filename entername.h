@@ -49,7 +49,7 @@ private slots:
     void on_pushButton_clicked();
 
 private:
-    game g;
+    game gg;
 
     Ui::entername *ui;
 
