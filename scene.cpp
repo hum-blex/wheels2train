@@ -5,22 +5,20 @@ scene::scene()
 {
     picture = new QPixmap(600,800);
     painter = new QPainter(picture);
-
+    //here picture becomes the parent of pixmap
+    //so when it gets deleted it so does picture
 
     painter->fillRect(0,0,600,800,Qt::black);//color in rgb
     painter->fillRect(295,0,10,800,Qt::white);
-//    int interval=0;
-//    for(int i=0 ;i<14;i++){
-//        painter->fillRect(148,interval,4,40,Qt::white);
-//        painter->fillRect(448,interval,4,40,Qt::white);
-//        interval+=60;
-//    }
+
     painter->fillRect(148,0,4,800,Qt::white);
     painter->fillRect(448,0,4,800,Qt::white);
+    //here we are drawing the white lines on the road
 
     addPixmap(*picture);
     addItem(lcar);
     addItem(rcar);
+    //adding both cars to the scene
 }
 
 void scene::keyPressEvent(QKeyEvent *event)

@@ -16,15 +16,13 @@ public:
     Circle();
     Circle(int,int);
     ~Circle();
-//    void time();
 signals:
     void CollidedWithCircle();
     void ReachedTheEnd(int);
 private:
-    QTimer * timer = new QTimer();
+    QTimer * timer;
 private slots:
     void move();
-
 };
 typedef Singleton<Circle> EmmitterC;
 

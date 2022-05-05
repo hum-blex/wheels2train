@@ -27,8 +27,7 @@ private:
     static T* m_Instance;
 };
 
-template <class T>
-T* Singleton<T>::m_Instance=NULL;
+template <class T> T* Singleton<T>::m_Instance=NULL;
 
 
 
