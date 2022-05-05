@@ -19,7 +19,7 @@ Circle::Circle(int x,int y)
     setBrush(QBrush(QColor(23, 48, 212),Qt::SolidPattern));//circle color
     setPen(QPen(QColor(8, 27, 156)));//border color
     }
-
+    timer = new QTimer;
     //connecting the circle to move function when timeout occurs.
     connect(timer,SIGNAL(timeout()),this,SLOT(move())) ;
     timer->start(y);//y is passed from the game class. it is passed such as to change the speed of circles on the basis of scores achieved.

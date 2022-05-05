@@ -2,7 +2,6 @@
 #define SCORE_H
 
 #include <QGraphicsTextItem>
-#include "Singleton.h"
 
 class Score : public QGraphicsTextItem
 {
@@ -15,6 +14,5 @@ public:
 private:
     int score;
 };
-typedef Singleton<Score> EmmitterO;
 
 #endif // SCORE_H

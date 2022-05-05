@@ -24,9 +24,8 @@ public://default
 
     ~game();//default
     void start();
-    int getCurrentScore(){
-        return current_score;
-    }
+    int getCurrentScore(){return current_score;}
+
 
 signals:
     void gameEnded();
@@ -42,11 +41,9 @@ private://default
     int topPositions[4]={50,200,350,500};
     int circleOrSquare;
     int whichPosition;
-    Square sq;
-    Circle *ci;
 
-//    bool GameEnded = false;
-    bool GameRunning = true;
+    bool gameAlreadyEnded{false};
+//    bool GameRunning = true;
     int current_score{0};
 
 
@@ -54,7 +51,6 @@ private slots:
     void spawnCirclesandSquares();
     void EndGame(int);
     void IncreaseScore();
-//    void setSpeed();
 };
 
 #endif // GAME_H

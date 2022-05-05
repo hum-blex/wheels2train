@@ -31,6 +31,7 @@ void entername::on_pushButton_clicked()
     QString name = ui -> lineEdit -> text();//taking name as input
         qDebug() << name ;
         int highscore = gg.getCurrentScore();//passing the score from game class after the game ended to a variable highscore
+        qDebug()<<gg.getCurrentScore();
         qDebug()<< highscore;
         // query update after name and highscore is obtained
         QSqlQuery update;
