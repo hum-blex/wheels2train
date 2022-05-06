@@ -30,7 +30,7 @@ public:
    //checking if the data base is open or not
     bool connOpen(){
         mydb = QSqlDatabase :: addDatabase("QSQLITE");
-           mydb.setDatabaseName("mydb.db");
+           mydb.setDatabaseName(QDir::currentPath()+"/../wheels2train/db/mydb.db"); //access the database
 
            if(mydb.open()){
                qDebug()<<("Connected...");

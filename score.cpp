@@ -14,7 +14,6 @@ Score::Score(QGraphicsItem * parent):QGraphicsTextItem(parent),score(0)
 {
     score++;
     setPlainText(QString("Score: ")+ QString:: number(score));
-    qDebug()<<score;
 }
 
 int Score::getScore(){
@@ -25,5 +24,4 @@ void Score::resetScore()
 {
     score = 0;
     setPlainText(QString("Score: ")+ QString:: number(score));
-    qDebug()<<"score";
 }
