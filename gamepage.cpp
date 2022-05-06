@@ -74,11 +74,6 @@ void gamepage::return_to_main_page()
 }
 
 
-/*
--QPixmap is one of the four classes for handling image data including QImage, QBitmap,QPicture.
--QPixmap is an off-screen image representation that can be used as a paint device.
--QMessageBox provides a modal dialog for informing the user or for asking the user a question and receivine an answer.
-*/
 
 void gamepage::on_profile_clicked()
 {

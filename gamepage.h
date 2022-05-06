@@ -49,7 +49,7 @@ private:
 
     bool connOpen(){
         mydb = QSqlDatabase :: addDatabase("QSQLITE");
-           mydb.setDatabaseName("mydb.db");
+           mydb.setDatabaseName(QDir::currentPath()+"/../wheels2train/db/mydb.db");
 
            if(mydb.open()){
                qDebug()<<("Connected...");

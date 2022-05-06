@@ -43,7 +43,6 @@ private://default
     int whichPosition;
 
     bool gameAlreadyEnded{false};
-//    bool GameRunning = true;
     int current_score{0};
 
 

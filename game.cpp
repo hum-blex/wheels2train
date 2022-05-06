@@ -45,7 +45,6 @@ void game::start()
     timer->start(gameTimer);
     sb->resetScore();   //resets score to zero
     gameAlreadyEnded= false;
-//    GameRunning = true;
 }
 
 void game::spawnCirclesandSquares()
@@ -55,7 +54,6 @@ void game::spawnCirclesandSquares()
     whichPosition = rand()%4;
 
      z=sb->getScore();//gets score from score class
-    qDebug()<<"z:"<<z;
     int gameTimer;
     gameTimer = 2400;
     if(z <= 50)
@@ -70,7 +68,6 @@ void game::spawnCirclesandSquares()
         speed -= (z/2) * 1;
     else if(z > 50)
         speed = 5;
-    qDebug()<<z;
 
     //add a case where the both sides get n item at the same time
 
@@ -112,17 +109,12 @@ void game::EndGame(int a){
 
         endg = 1;
     } else {
-        current_score =z; /*sb->getScore();*/
-        qDebug()<<"score::"<<current_score;
+        current_score =z;
 
         return;
     }
-//    if(gameAlreadyEnded)//this is incase the car still collides or circle reaches the end afeter the game has ended;
-//        return;
 
-//    current_score = sb->getScore();
     gameAlreadyEnded = true;
-//    GameRunning = false;
     timer->stop();
     QString message{};
 
@@ -142,10 +134,8 @@ void game::EndGame(int a){
 
 void game::IncreaseScore()
 {
-//    if(!GameEnded)
 
     if (!gameAlreadyEnded){
         sb->increaseScore();
-        qDebug() << "Test";
     }
 }
